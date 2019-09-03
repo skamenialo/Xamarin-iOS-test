@@ -11,7 +11,7 @@ namespace Test
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            Application.Current.MainPage = new NavigationView(CreatePage(typeof(MainPage)));
         }
 
         protected override void OnStart()
@@ -27,6 +27,18 @@ namespace Test
         protected override void OnResume()
         {
             // Handle when your app resumes
+        }
+
+        public static Page CreatePage(Type page)
+        {
+            try
+            {
+                return Activator.CreateInstance(page) as Page;
+            }
+            catch (Exception e)
+            {
+                throw;
+            }
         }
     }
 }

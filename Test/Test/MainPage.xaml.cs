@@ -18,7 +18,8 @@ namespace Test
 
         private void Button_Pressed(object sender, EventArgs e)
         {
-            DependencyService.Resolve<Iapp>().OpenScreen();
+            //DependencyService.Resolve<Iapp>().OpenScreen();
+            Application.Current.MainPage.Navigation.PushAsync(App.CreatePage(typeof(TabbedPage1)));
         }
     }
 }
